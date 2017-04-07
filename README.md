@@ -1,4 +1,6 @@
-# Angular2-FlashBox component example application 
+# ng2 - flashbox
+[![npm version](https://img.shields.io/npm/v/ng2-flashbox.svg)](https://www.npmjs.com/package/ng2-flashbox) [![npm downloads-monthly](https://img.shields.io/npm/dm/ng2-flashbox.svg)](https://www.npmjs.com/package/ng2-flashbox) [![npm downloads-total](https://img.shields.io/npm/dt/ng2-flashbox.svg)](https://www.npmjs.com/package/ng2-flashbox)
+
 FlashBox component is angular2 component provided to display simple user information messages.
 
 GitHub repository for component module can be found here [ng2-flashbox](https://github.com/vladimirpavk/ng2-flashbox/).
@@ -6,7 +8,7 @@ GitHub repository for sample application can be found here [Angular2-FlashBoxCom
 Online sample application can be found at github pages [online-demo](https://vladimirpavk.github.io/Angular2-FlashBoxComponent/).
 
 ### Dependencies
-FlashBox component uses **@angular/core** and **@angular/platform-browser** modules.
+FlashBox is angular2 component dependent on only **@angular/core** and **@angular/platform-browser** modules.
 
 ### How to use FlashBox component
 FlashBox component is (for now only) part of the CommonComponents module.
@@ -22,7 +24,7 @@ System.config({
     },
     map: {
         ...
-        'commoncomponents': ''npm:ng2-flashbox'
+        'commoncomponents': 'npm:ng2-flashbox'
         ...
     },
      packages: {
@@ -55,7 +57,7 @@ Place your  HTML based user information message inside *flash-box* element.
 
 ```
 <flash-box>
-        <!-- Message -->
+        <!-- HTML Message -->
 </flash-box> 
 
 ```
@@ -64,9 +66,9 @@ Place your  HTML based user information message inside *flash-box* element.
 
 ### Attributes
 ```
-    <flash-box [type]="type_value" [position]="position_value" [max-width]="maxwidth_value" [setTimeout]="setTimeout_value>
+<flash-box [type]="type_value" [position]="position_value" [max-width]="maxwidth_value" [setTimeout]="setTimeout_value>
         HTML message
-    </flash-box>    
+</flash-box>    
 ```
 
 ### Actions
@@ -102,7 +104,7 @@ In order to cause an flashbox control action use angular2 template local variabl
         ....
     </flash-box>
     
-    <button (click)="tlv_name.available_action">Cause flashbox action</button>
+    <button (click)="tlv_name.available_action()">Cause flashbox action</button>
 ```
 #### **Controller example**
 reference component 
@@ -115,11 +117,13 @@ reference component from template local variable using
 tlv_name.available_action();
 ```
 
-##### **Available actions:**
-1. **flashOnce():** *void* - Show flashbox only once for **setTimeout** amount of time
-2. **show():** *void* - Make control visible for unlimited amount of time (or untill some other action happens)
-3. **hide():** *void* - Make control hidden for unlimited amount of time (or untill some other action happens)
-4. **startFlashing():** *void* - Start flashing for unlimited amount of time (or untill some other action happens). Transition period from unvisble to visible is set to **0,5 sec** and is currently unconfigurable. The flashbox control us shown for **setTimeout** amount of time.
-5. **stopFlashing():** *void* - Stop flashing
+##### **Available actions(available_action()): **
+1. **flashOnce():void** - Show flashbox only once for **setTimeout** amount of time
+2. **show():void** - Make control visible for unlimited amount of time (or untill some other action happens)
+3. **hide():void** - Make control hidden for unlimited amount of time (or untill some other action happens)
+4. **startFlashing():void** - Start flashing for unlimited amount of time (or untill some other action happens). Transition period from unvisible to visible is set to **0,5 sec** and is currently unconfigurable. The flashbox control us shown for **setTimeout** amount of time.
+5. **stopFlashing():void** - Stop flashing
+
+
 
 

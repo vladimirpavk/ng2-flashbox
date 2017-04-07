@@ -1,0 +1,5 @@
+Changes to 0.1.1
+===================
+Added CHANGES.log file
+Added .npmignore - ignore *.ts and tsconfig.json when publishing module
+Changes to documentation README.md
