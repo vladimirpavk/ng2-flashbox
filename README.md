@@ -70,6 +70,12 @@ Place your  HTML based user information message inside *flash-box* element.
         HTML message
 </flash-box>    
 ```
+###Important change instead above code use this
+```
+<flash-box type="type_value" position="position_value" max-width="maxwidth_value" setTimeout="setTimeout_value">
+        HTML message
+</flash-box>    
+```
 
 ### Actions
 
@@ -111,6 +117,11 @@ reference component
 ```
 import { FlashBoxComponent } from 'commoncomponents/components/flashbox.component';
 ```
+###Important change instead above code use this
+```
+import { FlashBoxComponent } from 'commoncomponents/components/flashbox/flashbox.component';
+```
+
 reference component from template local variable using 
 ```
 @ViewChild("tlv_name") tlv:FlashBoxComponent;
