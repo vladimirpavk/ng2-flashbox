@@ -4,7 +4,9 @@
 FlashBox component is angular2 component provided to display simple user information messages.
 
 GitHub repository for component module can be found here [ng2-flashbox](https://github.com/vladimirpavk/ng2-flashbox/).
+
 GitHub repository for sample application can be found here [Angular2-FlashBoxComponent](https://github.com/vladimirpavk/Angular2-FlashBoxComponent).
+
 Online sample application can be found at github pages [online-demo](https://vladimirpavk.github.io/Angular2-FlashBoxComponent/).
 
 ### Dependencies
@@ -51,38 +53,39 @@ Import { CommonComponentsModule } from 'commoncomponents';
 })
 ```
 
-Now we can use FlashBox component in our module declared component template using <flash-box> element.
-
-Place your  HTML based user information message inside *flash-box* element.
+Now we can use FlashBox component in our module declared components templates with ```<flash-box>``` element.
+Place your  HTML based user information message inside element.
 
 ```
 <flash-box>
         <!-- HTML Message -->
+        <div style="border-type: solid; border-width:2px">
+            <label style="color: rgb(0,0,0); text-decoration: underline;">Information message</label>
+        </div>
+        <label>
+            Any message
+        </label>
 </flash-box> 
 
 ```
 
-### Inputs
-
 ### Attributes
-```
-<flash-box [type]="type_value" [position]="position_value" [max-width]="maxwidth_value" [setTimeout]="setTimeout_value>
-        HTML message
-</flash-box>    
-```
-###Important change instead above code use this
+
 ```
 <flash-box type="type_value" position="position_value" max-width="maxwidth_value" setTimeout="setTimeout_value">
-        HTML message
+        <!-- HTML message -->
 </flash-box>    
 ```
 
-### Actions
+1. **type_value**: *string*, default: **primary**
+Specify FlashBox type. 
 
-1. **type:** *string*, default: **primary**
-Specify type of flash box. Available types: **default**, **primary**, **success**, **info**, **warning**, **danger** based on default bootstrap label types
+Available types: **default**, **primary**, **success**, **info**, **warning**, **danger** 
+based on default bootstrap label types
 
-2. **position:** *string*, default: **tr**. Specify position of flash box. 
+2. **position_value**: *string*, default: **tr**. 
+Specify FlashBox position.
+
 Available values:
   * **tr** - top-right,
   * **tm** - top-middle,
@@ -94,45 +97,45 @@ Available values:
   * **bm** - bottom-middle,
   * **bl** - bottom-left
 
-3. **max-width:** *string*, default: *300px*
-Specify max-width of flash box component
+3. **max-width_value**: *string*, default: **300px**
+Specify FlashBox component maximum width.
 
-4. **setTimeout** *number*, default: *2000*
-Specify timeout (number of **ms** the control is visible) in **ms**. Default is **2 sec**.
+4. **setTimeout_value**: *number*, default: **2000**
+Specify the amount of time the component is visible in *ms*. Default is **2 sec**.
+
 
 ### Actions
 
-In order to cause an flashbox control action use angular2 template local variable system.
+In order to cause an flashbox control action use angular2 template local variable system or controler method invokation.
 
-#### **Template example**
+#### **Template local variable example**
 ```
     <flash-box .... #tlv_name>
         ....
     </flash-box>
     
-    <button (click)="tlv_name.available_action()">Cause flashbox action</button>
+    <button (click)="tlv_name.**available_action**()">Cause flashbox action</button>
 ```
-#### **Controller example**
-reference component 
+
+#### **Controller method invokation example**
+
+reference component source
 ```
-import { FlashBoxComponent } from 'commoncomponents/components/flashbox.component';
-```
-###Important change instead above code use this
-```
-import { FlashBoxComponent } from 'commoncomponents/components/flashbox/flashbox.component';
+    import { FlashBoxComponent } from 'commoncomponents/components/flashbox/flashbox.component';
 ```
 
 reference component from template local variable using 
 ```
-@ViewChild("tlv_name") tlv:FlashBoxComponent;
-tlv_name.available_action();
+    @ViewChild("tlv_name") tlv:FlashBoxComponent;
+    tlv.**available_action**();
 ```
 
-##### **Available actions(available_action()): **
+##### **Available actions(available_action()) **:
 1. **flashOnce():void** - Show flashbox only once for **setTimeout** amount of time
 2. **show():void** - Make control visible for unlimited amount of time (or untill some other action happens)
 3. **hide():void** - Make control hidden for unlimited amount of time (or untill some other action happens)
-4. **startFlashing():void** - Start flashing for unlimited amount of time (or untill some other action happens). Transition period from unvisible to visible is set to **0,5 sec** and is currently unconfigurable. The flashbox control us shown for **setTimeout** amount of time.
+4. **startFlashing():void** - Start flashing for unlimited amount of time (or untill some other action happens).
+Transition period from unvisible to visible is set to **0,5 sec** and is currently unconfigurable. The flashbox control us shown for **setTimeout** amount of time.
 5. **stopFlashing():void** - Stop flashing
 
 
