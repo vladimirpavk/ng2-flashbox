@@ -12,6 +12,11 @@ Online sample application can be found at github pages [online-demo](https://vla
 ### Dependencies
 FlashBox is angular2 component dependent on only **@angular/core** and **@angular/platform-browser** modules.
 
+### Installation
+```
+npm install ng2-flashbox --save
+```
+
 ### How to use FlashBox component
 FlashBox component is (for now only) part of the CommonComponents module.
 
