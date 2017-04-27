@@ -119,7 +119,7 @@ In order to cause an flashbox control action use angular2 template local variabl
         ....
     </flash-box>
     
-    <button (click)="tlv_name.**available_action**()">Cause flashbox action</button>
+    <button (click)="tlv_name.available_action()">Cause flashbox action</button>
 ```
 
 #### **Controller method invokation example**
@@ -132,10 +132,10 @@ reference component source
 reference component from template local variable using 
 ```
     @ViewChild("tlv_name") tlv:FlashBoxComponent;
-    tlv.**available_action**();
+    tlv.available_action();
 ```
 
-##### **Available actions(available_action()) **:
+##### **Available actions(available_action())**:
 1. **flashOnce():void** - Show flashbox only once for **setTimeout** amount of time
 2. **show():void** - Make control visible for unlimited amount of time (or untill some other action happens)
 3. **hide():void** - Make control hidden for unlimited amount of time (or untill some other action happens)
