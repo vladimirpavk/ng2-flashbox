@@ -5,6 +5,6 @@ import { FlashBoxComponent }   from './components/flashbox/flashbox.component';
 @NgModule({
   imports:      [ BrowserModule ],
   declarations: [ FlashBoxComponent ],
-  exports: [ BrowserModule, FlashBoxComponent ]
+  exports: [ FlashBoxComponent ]
 })
 export class CommonComponentsModule { }

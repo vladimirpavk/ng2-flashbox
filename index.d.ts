@@ -1,2 +1,2 @@
-/// <reference path="./commoncomponents.module.d.ts" />
-/// <reference path="./components/flashbox/flashbox.component.d.ts" />
+export * from './commoncomponents.module';
+export * from './components/flashbox/flashbox.component';
