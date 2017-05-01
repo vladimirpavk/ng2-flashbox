@@ -31,12 +31,12 @@ System.config({
     },
     map: {
         ...
-        'commoncomponents': 'npm:ng2-flashbox'
+        'ng2-flashbox': 'npm:ng2-flashbox'
         ...
     },
      packages: {
       ...
-      commoncomponents: {
+      'ng2-flashbox': {
         main: './commoncomponents.module.js',
         defaultExtension: 'js'
       }
@@ -49,11 +49,14 @@ System.config({
 In your application module definition file import CommonComponents module.
 ```
 ... 
-Import { CommonComponentsModule } from 'commoncomponents';
+Import { CommonComponentsModule } from 'ng2-flashbox';
 ...
 @NgModule({
     ...
-     imports:      [ CommonComponentsModule ],
+     imports: [ ...
+         CommonComponentsModule 
+         ...
+         ],
     ...
 })
 ```
@@ -66,10 +69,10 @@ Place your  HTML based user information message inside element.
         <!-- HTML Message -->
         <div style="border-type: solid; border-width:2px">
             <label style="color: rgb(0,0,0); text-decoration: underline;">Information message</label>
-        </div>
-        <label>
+           <label>
             Any message
-        </label>
+            </label>
+        </div>
 </flash-box> 
 
 ```
@@ -126,7 +129,7 @@ In order to cause an flashbox control action use angular2 template local variabl
 
 reference component source
 ```
-    import { FlashBoxComponent } from 'commoncomponents/components/flashbox/flashbox.component';
+    import { FlashBoxComponent } from 'ng2-flashbox';
 ```
 
 reference component from template local variable using 
@@ -142,7 +145,3 @@ reference component from template local variable using
 4. **startFlashing():void** - Start flashing for unlimited amount of time (or untill some other action happens).
 Transition period from unvisible to visible is set to **0,5 sec** and is currently unconfigurable. The flashbox control us shown for **setTimeout** amount of time.
 5. **stopFlashing():void** - Stop flashing
-
-
-
-
