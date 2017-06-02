@@ -30,17 +30,44 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                     this.style_type = [false, false, false, false, false, false];
                     this.style_position = [false, false, false, false, false, false, false, false, false];
                 }
+                /**
+                 * Set type of flash box.
+                 * Available values:
+                 * default, primary, success, info, warning, danger
+                 * Default value is primary.
+                 */
                 set type(value) {
                     this._type = value;
                     this.setType();
                 }
+                /**
+                * Set position of flash box.
+                * Available values:
+                * tr - top-right,
+                * tm - top-middle,
+                * tl - top-left,
+                * cr - center-right,
+                * cm - center-middle,
+                * cl - center-left,
+                * br - bottom-right,
+                * bm - bottom-middle,
+                * bl - bottom-left
+                * Default value is tr.
+                */
                 set position(value) {
                     this._position = value;
                     this.setPosition();
                 }
+                /**
+                 * Specify component's maximum width.
+                 * Default value is 300 px.
+                 */
                 set maxwidth(value) {
                     this._maxwidth = value;
                 }
+                /**
+                 * Specify the amount of time the component is visible in ms. Default value is 2000ms.
+                 */
                 set setTimeout(value) {
                     this._setTimeout = value;
                 }
@@ -145,18 +172,34 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                             ;
                     }
                 }
+                /**
+                 * Use this method to show message only once.
+                 * Message will appear and then disappear.
+                 */
                 flashOnce() {
                     this.isShown = !this.isShown;
                     setTimeout(() => {
                         this.isShown = !this.isShown;
                     }, this._setTimeout);
                 }
+                /**
+                 * Use this method to show message.
+                 * Message will be visible until hide() method is called.
+                 */
                 show() {
                     this.isShown = false;
                 }
+                /**
+                 * Use this method to hide message.
+                 * Message will be hidden until show() method is called.
+                 */
                 hide() {
                     this.isShown = true;
                 }
+                /**
+                 * Use this message to start message flashing.
+                 * Message will be flashing until stopFlashing() method is called.
+                 */
                 startFlashing() {
                     //if already blinking do nothing
                     if (this.intervalCounter != 0)
@@ -166,6 +209,10 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                         this.isShown = !this.isShown;
                     }, this._setTimeout);
                 }
+                /**
+                 * Use this message to stop message flashing.
+                 * Message will be stopped until startFlashing() method is called.
+                 */
                 stopFlashing() {
                     if (this.intervalCounter != 0) {
                         clearInterval(this.intervalCounter);
@@ -209,4 +256,5 @@ System.register(["@angular/core"], function (exports_1, context_1) {
         }
     };
 });
+
 //# sourceMappingURL=flashbox.component.js.map
