@@ -4,9 +4,9 @@
   "description": "Angular2 - FlashBox component",
   "main": "commoncomponents.module.js",
   "types": "./index",
-  "devDependencies": {
-    "@angular/core": "^2.4.5",
-    "@angular/platform-browser": "^2.4.5"
+  "dependencies": {
+    "@angular/core": ">=2.4.5",
+    "@angular/platform-browser": ">=2.4.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

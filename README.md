@@ -37,7 +37,7 @@ System.config({
      packages: {
       ...
       'ng2-flashbox': {
-        main: './commoncomponents.module.js',
+        main: 'index',
         defaultExtension: 'js'
       }
       ...
