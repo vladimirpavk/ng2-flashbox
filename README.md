@@ -145,3 +145,4 @@ reference component from template local variable using
 4. **startFlashing():void** - Start flashing for unlimited amount of time (or untill some other action happens).
 Transition period from unvisible to visible is set to **0,5 sec** and is currently unconfigurable. The flashbox control us shown for **setTimeout** amount of time.
 5. **stopFlashing():void** - Stop flashing
+6. **toogle():void** - Toggle show/hide control

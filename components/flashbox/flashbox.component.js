@@ -173,6 +173,12 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                     }
                 }
                 /**
+                 * Use this method to show/hide message
+                 */
+                toggle() {
+                    this.isShown = !this.isShown;
+                }
+                /**
                  * Use this method to show message only once.
                  * Message will appear and then disappear.
                  */

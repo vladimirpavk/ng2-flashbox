@@ -44,6 +44,10 @@ export declare class FlashBoxComponent implements OnInit {
     private setType();
     private setPosition();
     /**
+     * Use this method to show/hide message
+     */
+    toggle(): void;
+    /**
      * Use this method to show message only once.
      * Message will appear and then disappear.
      */
