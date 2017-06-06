@@ -5,9 +5,9 @@ FlashBox component is angular2 component provided to display simple user informa
 
 GitHub repository for component module can be found here [ng2-flashbox](https://github.com/vladimirpavk/ng2-flashbox/).
 
-GitHub repository for sample application can be found here [Angular2-FlashBoxComponent](https://github.com/vladimirpavk/Angular2-FlashBoxComponent).
+GitHub repository for sample application(Angular4, SystemJS) can be found here [Angular4-FlashBoxComponent](https://github.com/vladimirpavk/Angular4-FlashBoxComponent).
 
-Online sample application can be found at github pages [online-demo](https://vladimirpavk.github.io/Angular2-FlashBoxComponent/).
+Online sample application can be found at github pages [online-demo](https://vladimirpavk.github.io/Angular4-FlashBoxComponent/).
 
 ### Dependencies
 FlashBox is angular2 component dependent on only **@angular/core** and **@angular/platform-browser** modules.
