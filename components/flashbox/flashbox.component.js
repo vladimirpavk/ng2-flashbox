@@ -1,4 +1,4 @@
-System.register(["@angular/core", "rxjs/rx"], function (exports_1, context_1) {
+System.register(["@angular/core", "rxjs/Rx"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,14 +10,14 @@ System.register(["@angular/core", "rxjs/rx"], function (exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, rx_1, __moduleName, FlashBoxComponent;
+    var core_1, Rx_1, __moduleName, FlashBoxComponent;
     return {
         setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (rx_1_1) {
-                rx_1 = rx_1_1;
+            function (Rx_1_1) {
+                Rx_1 = Rx_1_1;
             }
         ],
         execute: function () {
@@ -269,7 +269,7 @@ System.register(["@angular/core", "rxjs/rx"], function (exports_1, context_1) {
                         this._busy.emit();
                         return;
                     }
-                    this._intervalCounterHandler = rx_1.Observable.timer(0, parseInt(this._setTimeout) + 1000);
+                    this._intervalCounterHandler = Rx_1.Observable.timer(0, parseInt(this._setTimeout) + 1000);
                     this._intervalCounterObserver = this._intervalCounterHandler.subscribe((num) => {
                         this.toggle();
                     });
@@ -299,7 +299,7 @@ System.register(["@angular/core", "rxjs/rx"], function (exports_1, context_1) {
                         this._busy.emit();
                         return;
                     }
-                    this._intervalCounterHandler = rx_1.Observable.timer(0, parseInt(this._setTimeout) + 1000);
+                    this._intervalCounterHandler = Rx_1.Observable.timer(0, parseInt(this._setTimeout) + 1000);
                     this._intervalCounterObserver = this._intervalCounterHandler.subscribe((num) => {
                         if (num != times * 2) {
                             // console.log(num);
