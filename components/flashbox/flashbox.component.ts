@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Observable, Subscription } from 'rxjs/rx';
 
 let __moduleName: any;
 
@@ -10,13 +11,27 @@ let __moduleName: any;
 })
 export class FlashBoxComponent implements OnInit{
    
-    private isShown: boolean = true;
-    //counter handler
-    private intervalCounter: number = 0;
+    private isShown: boolean = false;
+  
+    private _intervalCounterHandler: Observable<number>;
+    private _intervalCounterObserver: Subscription= null;    
+
+    //emit when flashbox start showing up
+    @Output("onStartVisibleEvent") _onStartVisible = new EventEmitter();
+    //emit when flashbox is completely visible
+    @Output("onEndVisibleEvent") _onEndVisible = new EventEmitter();
+    //emit when flashbox start dissapearing
+    @Output("onStartHiddenEvent") _onStartHidden = new EventEmitter();
+    //emit when flashbox is hidden
+    @Output("onEndHiddenEvent") private _onEndHidden = new EventEmitter();   
+    //emit when you try to start flashing flashbox that is already flashing
+    @Output("busyEvent") _busy = new EventEmitter();
+    //setTimeout value must be greater than 0
+    @Output("invalidValueEvent") _invalidValue = new EventEmitter();
 
     private _type: string = "primary";
     /**
-     * Set type of flash box.
+     * Set type of flashbox.
      * Available values: 
      * default, primary, success, info, warning, danger
      * Default value is primary. 
@@ -29,7 +44,7 @@ export class FlashBoxComponent implements OnInit{
    
     private _position: string = "tr";
      /**
-     * Set position of flash box.
+     * Set position of flashbox.
      * Available values:
      * tr - top-right,
      * tm - top-middle,
@@ -50,7 +65,7 @@ export class FlashBoxComponent implements OnInit{
     
     private _maxwidth: string = "300px";
     /**
-     * Specify component's maximum width.
+     * Specify flashbox maximum width.
      * Default value is 300 px.
      */
     @Input("maxwidth")
@@ -60,7 +75,7 @@ export class FlashBoxComponent implements OnInit{
     
     private _setTimeout: number = 2000;    
     /**
-     * Specify the amount of time the component is visible in ms. Default value is 2000ms.
+     * Specify the amount of time flashbox is visible in ms. Default value is 2000ms.
      */
     @Input("setTimeout")
     set setTimeout(value : number){
@@ -71,7 +86,25 @@ export class FlashBoxComponent implements OnInit{
 
     private style_position: boolean[] = [false, false, false, false, false, false, false, false, false];
 
-    constructor(){}
+    constructor(){
+        /*
+        //subscribe to events
+        this._onStartVisible.subscribe(()=>{
+            console.log("_onStartVisible event fired");
+        });
+        this._onEndVisible.subscribe(()=>{
+            console.log("_onEndVisible event fired");
+        });
+        this._onStartHidden.subscribe(()=>{
+            console.log("_onStartHidden event fired");
+        });
+        this._onEndHidden.subscribe(()=>{
+            console.log("_onEndHidden event fired");      
+        this._busy.subscribe(()=>{
+            console.log("_busy event fired");
+        });*/        
+        console.log("FlashBoxComponent v0.2.1")
+    }
 
     ngOnInit(){
         this.setType();
@@ -154,62 +187,120 @@ export class FlashBoxComponent implements OnInit{
         }
     }
     /**
-     * Use this method to show/hide message
+     * Use this method to toggle(show/hide) flashbox.
      */
     public toggle(): void{
-        this.isShown=!this.isShown;
-    }
-    
+        if(this.isShown) this.hide();
+        else this.show();
+    }        
     /**
-     * Use this method to show message only once.
-     * Message will appear and then disappear.
+     * Use this method to show flashbox.
+     * Flashbox will be visible until hide() method is called.
      */
-    public flashOnce(): void{        
-        this.isShown=!this.isShown;
+    public show(): void{              
+        if(this.isShown){    
+            console.error("FlashBox component is already shown");                                   
+            this._busy.emit();
+            return;
+        }            
 
-        setTimeout(()=> {            
-            this.isShown=!this.isShown;        
-        }, this._setTimeout);
+        this._onStartVisible.emit();
+        this.isShown=true;
+        setTimeout(()=>{
+             this._onEndVisible.emit();
+        }, 500);        
+
     }
     /**
-     * Use this method to show message.
-     * Message will be visible until hide() method is called.
+     * Use this method to hide flashbox.
+     * Flashbox will be hidden until show() method is called.
      */
-    public show(): void{
+    public hide(): void{  
+
+        if(!this.isShown){  
+            console.error("FlashBox component is already hidden");         
+            this._busy.emit();
+            return;
+        }      
+       
+        this._onStartHidden.emit();
         this.isShown=false;
+        setTimeout(()=>{
+              this._onEndHidden.emit();
+        },500);
+           
+    }
+     /**
+     * Use this method to show flashbox only once.
+     * Flashbox will appear and then disappear.
+     */   
+    public flashOnce(): void{
+        //if flashbox is flashing or visible emit busy event       
+        if( (this._intervalCounterObserver!=null && !this._intervalCounterObserver.closed) || this.isShown ){
+            console.error("FlashBox component is either shown or flashing");           
+            this._busy.emit();
+            return;
+        }            
+             
+        this.show();
+        setTimeout(()=>this.hide(), this._setTimeout);      
     }
     /**
-     * Use this method to hide message.
-     * Message will be hidden until show() method is called.
-     */
-    public hide(): void{
-         this.isShown=true;
-    }
-    /**
-     * Use this message to start message flashing.
-     * Message will be flashing until stopFlashing() method is called.
+     * Use this method to start flashbox flashing.
+     * FlashBox will be flashing until stopFlashing() method is called.
      */
     public startFlashing(): void{
-        //if already blinking do nothing
-        if(this.intervalCounter!=0) return;
-
-        this.isShown=!this.isShown;
-
-        this.intervalCounter=setInterval(()=> {            
-            this.isShown=!this.isShown;        
-        }, this._setTimeout);
+         //if flashbox is flashing or visible emit busy event       
+        if( (this._intervalCounterObserver!=null && !this._intervalCounterObserver.closed) || this.isShown ){
+            console.error("FlashBox component is either shown or flashing");           
+            this._busy.emit();
+            return;
+        }            
+                             
+        this._intervalCounterHandler=Observable.timer(0, parseInt(this._setTimeout)+1000);        
+        this._intervalCounterObserver=this._intervalCounterHandler.subscribe((num)=>{
+            this.toggle();
+        });           
     }
     /**
-     * Use this message to stop message flashing.
-     * Message will be stopped until startFlashing() method is called.
+     * Use this method to stop flashbox flashing.
+     * FlashBox will be stopped until startFlashing() method is called.
      */
-    public stopFlashing(): void{
-        if(this.intervalCounter != 0){
-            clearInterval(this.intervalCounter);
-            this.intervalCounter=0;
-            //check if left in state visible
-            if(!this.isShown) this.isShown=true;
-        }
+    public stopFlashing(): void{       
+       this._intervalCounterObserver.unsubscribe();
+       this.isShown=false;
     }
+
+    /**
+     * Use this method to start flashbox flashing for predefined number of times. 
+     */
+    public flashTimes(times: number): void{
+        if(times < 0)
+        {
+            //invalid value
+            console.error("Value must be greater than 0");
+            this._invalidValue.emit();
+            return;
+        }
+        //if already blinking or shown do nothing
+        //message must be hidden to start flashing
+         if( (this._intervalCounterObserver!=null && !this._intervalCounterObserver.closed) || this.isShown ){
+            console.error("FlashBox component is either shown or flashing");           
+            this._busy.emit();
+            return;
+        }            
+
+        this._intervalCounterHandler=Observable.timer(0, parseInt(this._setTimeout)+1000);        
+        this._intervalCounterObserver=this._intervalCounterHandler.subscribe((num)=>{
+            if(num != times*2){
+               // console.log(num);
+                this.toggle();
+            }
+            else{
+                this._intervalCounterObserver.unsubscribe();
+            }
+        });           
+    }
+
 
 }

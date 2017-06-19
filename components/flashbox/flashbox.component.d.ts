@@ -1,10 +1,17 @@
-import { OnInit } from '@angular/core';
+import { OnInit, EventEmitter } from '@angular/core';
 export declare class FlashBoxComponent implements OnInit {
     private isShown;
-    private intervalCounter;
+    private _intervalCounterHandler;
+    private _intervalCounterObserver;
+    _onStartVisible: EventEmitter<{}>;
+    _onEndVisible: EventEmitter<{}>;
+    _onStartHidden: EventEmitter<{}>;
+    private _onEndHidden;
+    _busy: EventEmitter<{}>;
+    _invalidValue: EventEmitter<{}>;
     private _type;
     /**
-     * Set type of flash box.
+     * Set type of flashbox.
      * Available values:
      * default, primary, success, info, warning, danger
      * Default value is primary.
@@ -12,7 +19,7 @@ export declare class FlashBoxComponent implements OnInit {
     type: string;
     private _position;
     /**
-    * Set position of flash box.
+    * Set position of flashbox.
     * Available values:
     * tr - top-right,
     * tm - top-middle,
@@ -28,13 +35,13 @@ export declare class FlashBoxComponent implements OnInit {
     position: string;
     private _maxwidth;
     /**
-     * Specify component's maximum width.
+     * Specify flashbox maximum width.
      * Default value is 300 px.
      */
     maxwidth: string;
     private _setTimeout;
     /**
-     * Specify the amount of time the component is visible in ms. Default value is 2000ms.
+     * Specify the amount of time flashbox is visible in ms. Default value is 2000ms.
      */
     setTimeout: number;
     private style_type;
@@ -44,32 +51,36 @@ export declare class FlashBoxComponent implements OnInit {
     private setType();
     private setPosition();
     /**
-     * Use this method to show/hide message
+     * Use this method to toggle(show/hide) flashbox.
      */
     toggle(): void;
     /**
-     * Use this method to show message only once.
-     * Message will appear and then disappear.
-     */
-    flashOnce(): void;
-    /**
-     * Use this method to show message.
-     * Message will be visible until hide() method is called.
+     * Use this method to show flashbox.
+     * Flashbox will be visible until hide() method is called.
      */
     show(): void;
     /**
-     * Use this method to hide message.
-     * Message will be hidden until show() method is called.
+     * Use this method to hide flashbox.
+     * Flashbox will be hidden until show() method is called.
      */
     hide(): void;
     /**
-     * Use this message to start message flashing.
-     * Message will be flashing until stopFlashing() method is called.
+    * Use this method to show flashbox only once.
+    * Flashbox will appear and then disappear.
+    */
+    flashOnce(): void;
+    /**
+     * Use this method to start flashbox flashing.
+     * FlashBox will be flashing until stopFlashing() method is called.
      */
     startFlashing(): void;
     /**
-     * Use this message to stop message flashing.
-     * Message will be stopped until startFlashing() method is called.
+     * Use this method to stop flashbox flashing.
+     * FlashBox will be stopped until startFlashing() method is called.
      */
     stopFlashing(): void;
+    /**
+     * Use this method to start flashbox flashing for predefined number of times.
+     */
+    flashTimes(times: number): void;
 }
