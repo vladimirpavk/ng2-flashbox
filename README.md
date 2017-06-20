@@ -149,14 +149,14 @@ Transition period from unvisible to visible is set to **0,5 sec** and is current
 7. **flashTimes(number numOfTimes):void** -Show flashBox **numOfTimes** times
 
 ###Events
-1. **busyEvent** - fires when flashbox is busy. 
+1. **busyEvent()** - fires when flashbox is busy. 
     When show() on flashbox that is already shown.
     When hide() on flashbox that is already hidden.
     When flashOnce() on flashbox that is already shown or blinking.
     When startFlashing() on flashbox that is already shown or blinking.
     When flashTimes(number numOfTImes) on flashbox that is alread shown or blinking.
-2. **onStartVisibleEvent** - fires when flashbox is starting to show.
-3. **onEndVisibleEvent** - fires when flashbox is completely shown.
-4. **onStartHiddenEvent** - fires when flashbox is starting to become unvisible.
-5. **onEndHiddenEvent** - fires when flashbox is completely invisible.
-6. **invalidValueEvent** - fires when **setTimeout** to number that is less or equal 0.
+2. **onStartVisibleEvent()** - fires when flashbox is starting to show.
+3. **onEndVisibleEvent()** - fires when flashbox is completely shown.
+4. **onStartHiddenEvent()** - fires when flashbox is starting to become unvisible.
+5. **onEndHiddenEvent()** - fires when flashbox is completely invisible.
+6. **invalidValueEvent()** - fires when **setTimeout** to number that is less or equal 0.
