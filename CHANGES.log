@@ -1,3 +1,8 @@
+0.2.5
+================
+Changed README.md - configuring systemJS loader
+Changed package.json
+
 0.2.4
 ================
 Added rxjs dependecies

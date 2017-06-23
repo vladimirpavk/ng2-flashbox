@@ -1,9 +1,8 @@
 {
   "name": "ng2-flashbox",
   "version": "0.2.4",
-  "description": "Angular2 - FlashBox component",
-  "main": "commoncomponents.module.js",
-  "types": "./index",
+  "description": "Angular2 - FlashBox component", 
+  "typings": "./index.js",
   "dependencies": {
     "@angular/core": ">=2.4.5",
     "@angular/platform-browser": ">=2.4.5",

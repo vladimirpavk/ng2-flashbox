@@ -31,16 +31,8 @@ System.config({
     },
     map: {
         ...
-        'ng2-flashbox': 'npm:ng2-flashbox'
+        'ng2-flashbox': 'npm:ng2-flashbox/index.js'
         ...
-    },
-     packages: {
-      ...
-      'ng2-flashbox': {
-        main: 'index',
-        defaultExtension: 'js'
-      }
-      ...
     }
     ...
 })
