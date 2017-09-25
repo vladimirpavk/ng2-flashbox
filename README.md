@@ -1,8 +1,3 @@
-# Angular4-FlashBoxComponent
-Based on [Angular2-Skeleton](https://https://github.com/vladimirpavk/Angular4-Skeleton) - complete Angular4 build
-enviroment using Angular4 frmework, SystemJS module loader, gulp build system, browser-sync and
-node expressjs backend server.
-
 # ng2 - flashbox
 [![npm version](https://img.shields.io/npm/v/ng2-flashbox.svg)](https://www.npmjs.com/package/ng2-flashbox) [![npm downloads-monthly](https://img.shields.io/npm/dm/ng2-flashbox.svg)](https://www.npmjs.com/package/ng2-flashbox) [![npm downloads-total](https://img.shields.io/npm/dt/ng2-flashbox.svg)](https://www.npmjs.com/package/ng2-flashbox)
 
@@ -14,40 +9,51 @@ GitHub repository for sample application(Angular4, SystemJS) can be found here [
 
 Online sample application can be found at github pages [online-demo](https://vladimirpavk.github.io/Angular4-FlashBoxComponent/).
 
+### Dependencies
+FlashBox is angular2 component dependent on only **@angular/core** and **@angular/platform-browser** modules.
 
-
-### Prerequisites
-
-Must have node and npm installed
-
-
-### How to use
-
-Install node dependencies in your project root directory (this is where the 'package.json' file is located) using:
-```sh
-$ npm install
-``` 
-Install typescript definitions using:
-```sh
-$ typings install
+### Installation
 ```
-Start application with 
-```sh
-$ gulp
+npm install ng2-flashbox --save
 ```
 
-Wait untill application is fully compiled and backend server is started (notified by message).
+### How to use FlashBox component
+FlashBox component is (for now only) part of the CommonComponents module.
 
-Navigate to 
+In order to use the module you must configure your module loader. In case you use **systemjs** module loader add the following mapings:
 ```
-http://localhost:3000/index.html
+System.config({
+    ...
+    paths: {
+      ...
+      'npm:': 'node_modules/'
+      ...
+    },
+    map: {
+        ...
+        'ng2-flashbox': 'npm:ng2-flashbox/index.js'
+        ...
+    }
+    ...
+})
 ```
-to start application. If everything is ok Angular4-FlashBoxComponent sample application will start.
 
-You can now user FlashBox component with ```<flash-box>``` element in *app.component.html* or define FlashBoxComponent component in the controller.
+In your application module definition file import CommonComponents module.
+```
+... 
+Import { CommonComponentsModule } from 'ng2-flashbox';
+...
+@NgModule({
+    ...
+     imports: [ ...
+         CommonComponentsModule 
+         ...
+         ],
+    ...
+})
+```
 
-From *ng2-flashbox* README.md:
-
+Now we can use FlashBox component in our module declared components templates with ```<flash-box>``` element.
 Place your  HTML based user information message inside element.
 
 ```
@@ -124,28 +130,28 @@ reference component from template local variable using
     tlv.available_action();
 ```
 
-#### **Available actions(available_action())**:
-1. **flashOnce():void** - Show flashbox once
-2. **show():void** - Make flashbox visible for unlimited amount of time (or untill some other action happens)
-3. **hide():void** - Make flashbox hidden for unlimited amount of time (or untill some other action happens)
+##### **Available actions(available_action())**:
+1. **flashOnce():void** - Show flashbox only once for **setTimeout** amount of time
+2. **show():void** - Make control visible for unlimited amount of time (or untill some other action happens)
+3. **hide():void** - Make control hidden for unlimited amount of time (or untill some other action happens)
 4. **startFlashing():void** - Start flashing for unlimited amount of time (or untill some other action happens).
 Transition period from unvisible to visible is set to **0,5 sec** and is currently unconfigurable. The flashbox control us shown for **setTimeout** amount of time.
 5. **stopFlashing():void** - Stop flashing
 6. **toogle():void** - Toggle show/hide control
 7. **flashTimes(number numOfTimes):void** -Show flashBox **numOfTimes** times
 
-#### **Events**:
-1. **busyEvent** - fires when flashbox is busy. 
+###Events
+1. **busyEvent()** - fires when flashbox is busy. 
     When show() on flashbox that is already shown.
     When hide() on flashbox that is already hidden.
     When flashOnce() on flashbox that is already shown or blinking.
     When startFlashing() on flashbox that is already shown or blinking.
     When flashTimes(number numOfTImes) on flashbox that is alread shown or blinking.
-2. **onStartVisibleEvent** - fires when flashbox is starting to show.
-3. **onEndVisibleEvent** - fires when flashbox is completely shown.
-4. **onStartHiddenEvent** - fires when flashbox is starting to become unvisible.
-5. **onEndHiddenEvent** - fires when flashbox is completely invisible.
-6. **invalidValueEvent** - fires when **setTimeout** to number that is less or equal 0.
+2. **onStartVisibleEvent()** - fires when flashbox is starting to show.
+3. **onEndVisibleEvent()** - fires when flashbox is completely shown.
+4. **onStartHiddenEvent()** - fires when flashbox is starting to become unvisible.
+5. **onEndHiddenEvent()** - fires when flashbox is completely invisible.
+6. **invalidValueEvent()** - fires when **setTimeout** to number that is less or equal 0.
 7. **onTypeChangedEvent** - fires when you change **type** property of the control.
 8. **onPositionChangedEvent** - fires when you change **position** property of the control.
 9. **onMaxWidthChangedEvent** - fires when you change **maxwidth** property of the control.
