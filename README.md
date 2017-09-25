@@ -77,31 +77,27 @@ Place your **HTML** based message inside element like this
 </flash-box>    
 ```
  
-1. typeValue: **string**, default: **primary**
-
-Specify FlashBox type. Available values(bootstrap label types): **default**, **primary**, **success**, **info**, **warning**, **danger**.
+1. typeValue: **string**, default: **primary**.
+⋅⋅⋅Specify FlashBox type. Available values(bootstrap label types): **default**, **primary**, **success**, **info**, **warning**, **danger**.
 
 2. positionValue: **string**, default: **tr**. 
+⋅⋅⋅Specify FlashBox position. Available values:
 
-Specify FlashBox position. Available values:
-
-  * **tr** - top-right,
-  * **tm** - top-middle,
-  * **tl** - top-left,
-  * **cr** - center-right,
-  * **cm** - center-middle,
-  * **cl** - center-left,
-  * **br** - bottom-right,
-  * **bm** - bottom-middle,
-  * **bl** - bottom-left
-
+  ⋅⋅* **tr** - top-right,
+  ⋅⋅* **tm** - top-middle,
+  ⋅⋅* **tl** - top-left,
+  ⋅⋅* **cr** - center-right,
+  ⋅⋅* **cm** - center-middle,
+  ⋅⋅* **cl** - center-left,
+  ⋅⋅* **br** - bottom-right,
+  ⋅⋅* **bm** - bottom-middle,
+  ⋅⋅* **bl** - bottom-left
 
 3. maxWidthValue: **string**, default: **300px**
-
-Specify FlashBox maximum width.
+⋅⋅⋅Specify FlashBox maximum width.
 
 4. setTimeoutValue: **number**, default: **2000**
-Specify the amount of time FlashBox is visible in **ms**.
+⋅⋅⋅Specify the amount of time FlashBox is visible in **ms**.
 
 
 ### Actions
