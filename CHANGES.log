@@ -1,3 +1,8 @@
+0.2.10
+================
+Added version() method to return the current version of the control
+Switched to commonjs packages
+
 0.2.9
 ================
 Changed README.md and package.json

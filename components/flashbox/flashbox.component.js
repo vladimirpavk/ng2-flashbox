@@ -69,7 +69,8 @@ let FlashBoxComponent = class FlashBoxComponent {
         this._setTimeout = 2000;
         this.style_type = [false, false, false, false, false, false];
         this.style_position = [false, false, false, false, false, false, false, false, false];
-        console.log("FlashBoxComponent v0.2.6");
+        this._version = "0.2.10";
+        //console.log("FlashBoxComponent v0.2.6")
     }
     /**
      * Set type of flashbox.
@@ -119,6 +120,12 @@ let FlashBoxComponent = class FlashBoxComponent {
     ngOnInit() {
         this.setType();
         this.setPosition();
+    }
+    /**
+     * Use this method to retrieve the current control version
+     */
+    version() {
+        return this._version;
     }
     setType() {
         switch (this._type) {
@@ -397,5 +404,4 @@ FlashBoxComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], FlashBoxComponent);
 exports.FlashBoxComponent = FlashBoxComponent;
-
 //# sourceMappingURL=flashbox.component.js.map

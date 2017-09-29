@@ -1,18 +1,18 @@
-import { OnInit, EventEmitter } from '@angular/core';
+import { OnInit } from '@angular/core';
 export declare class FlashBoxComponent implements OnInit {
     private isShown;
     private _intervalCounterHandler;
     private _intervalCounterObserver;
-    _onStartVisible: EventEmitter<{}>;
-    _onEndVisible: EventEmitter<{}>;
-    _onStartHidden: EventEmitter<{}>;
+    _onStartVisible: any;
+    _onEndVisible: any;
+    _onStartHidden: any;
     private _onEndHidden;
-    _busy: EventEmitter<{}>;
-    _invalidValue: EventEmitter<{}>;
-    _typeChanged: EventEmitter<string>;
-    _positionChanged: EventEmitter<string>;
-    _maxWidthChanged: EventEmitter<number>;
-    _timeoutChanged: EventEmitter<number>;
+    _busy: any;
+    _invalidValue: any;
+    _typeChanged: any;
+    _positionChanged: any;
+    _maxWidthChanged: any;
+    _timeoutChanged: any;
     private _type;
     /**
      * Set type of flashbox.
@@ -52,6 +52,11 @@ export declare class FlashBoxComponent implements OnInit {
     private style_position;
     constructor();
     ngOnInit(): void;
+    private _version;
+    /**
+     * Use this method to retrieve the current control version
+     */
+    private version();
     private setType();
     private setPosition();
     /**

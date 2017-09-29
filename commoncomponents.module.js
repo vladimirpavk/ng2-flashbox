@@ -19,5 +19,4 @@ CommonComponentsModule = __decorate([
     })
 ], CommonComponentsModule);
 exports.CommonComponentsModule = CommonComponentsModule;
-
 //# sourceMappingURL=commoncomponents.module.js.map
