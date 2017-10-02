@@ -143,6 +143,7 @@ reference component from template local variable using
 5. **stopFlashing():void** - stop flashing.
 6. **toogle():void** - toggle show/hide control.
 7. **flashTimes(number numOfTimes):void** - show FlashBox **numOfTimes** times.
+8. **version():string** - to return the current version of the control
 
 
 #### **Events**:
