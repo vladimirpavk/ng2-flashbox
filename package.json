@@ -1,6 +1,6 @@
 {
     "name": "ng2-flashbox",
-    "version": "0.2.10",
+    "version": "0.2.11",
     "description": "Angular2 - FlashBox(ng2-flashbox) component",
     "typings": "./index.js",
     "dependencies": {
