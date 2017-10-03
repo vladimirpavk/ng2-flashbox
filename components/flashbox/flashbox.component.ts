@@ -134,7 +134,7 @@ export class FlashBoxComponent implements OnInit{
         this.setPosition();
     }    
 
-    private _version: string  ="0.2.10";
+    private _version: string  ="0.2.12";
     /**
      * Use this method to retrieve the current control version
      */

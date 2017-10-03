@@ -69,8 +69,8 @@ let FlashBoxComponent = class FlashBoxComponent {
         this._setTimeout = 2000;
         this.style_type = [false, false, false, false, false, false];
         this.style_position = [false, false, false, false, false, false, false, false, false];
-        this._version = "0.2.10";
-        //console.log("FlashBoxComponent v0.2.6")
+        this._version = "0.2.12";
+        //console.log("FlashBoxComponent v0.2.6");
     }
     /**
      * Set type of flashbox.
